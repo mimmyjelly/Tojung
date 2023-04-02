@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/wkdbt/AndroidStudioProjects/Tojung/app/src/main/res/drawable/option.xml" value="0.1425" />
+        <entry key="..\:/Users/wkdbt/AndroidStudioProjects/Tojung/app/src/main/res/drawable/optionmenu.xml" value="0.1425" />
+        <entry key="..\:/Users/wkdbt/AndroidStudioProjects/Tojung/app/src/main/res/drawable/tojung.xml" value="0.1425" />
         <entry key="..\:/Users/wkdbt/AndroidStudioProjects/Tojung/app/src/main/res/layout/activity_main.xml" value="0.2212962962962963" />
+        <entry key="..\:/Users/wkdbt/AndroidStudioProjects/Tojung/app/src/main/res/layout/option.xml" value="0.3482789855072464" />
       </map>
     </option>
   </component>
