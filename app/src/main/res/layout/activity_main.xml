@@ -21,10 +21,11 @@
     <ImageView
         android:layout_width="66dp"
         android:layout_height="64dp"
+        android:layout_marginStart="264dp"
         android:src="@drawable/option"
-        tools:layout_editor_absoluteX="276dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="1dp">
 
     </ImageView>
 
