@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String BASE_URL = "https://api.openai.com/v1/";
 
     //API 키 값 삽입
-    private static final String API_KEY = "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";
+    private static final String API_KEY = "insert_api_key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
