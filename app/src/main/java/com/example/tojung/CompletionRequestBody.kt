@@ -1,0 +1,19 @@
+data class CompletionRequestBody(
+    val prompt: String,
+    val max_tokens: Int,
+    val n: Int,
+    val stop: String,
+    val temperature: Double,
+    val presence_penalty: Double,
+    val frequency_penalty: Double,
+    val model: String,
+    val engine: String,
+    val temperature_decay_rate: Double,
+    val burnin: Int,
+    val best_of: Int,
+    val logprobs: Int,
+    val echo: Boolean,
+    val stream: Boolean,
+    val output_prefix: String,
+    val seed: Long
+)
