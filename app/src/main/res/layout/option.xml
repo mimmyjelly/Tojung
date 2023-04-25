@@ -5,28 +5,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/option_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/optionmenu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="1dp"></ImageView>
+        android:background="@color/green"
+        android:backgroundTint="@color/green"
+        android:gravity="end"
+        tools:ignore="MissingConstraints">
 
 
-    <ImageView
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:src="@drawable/option"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.795"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001"
-        tools:ignore="MissingConstraints"></ImageView>
+        <ImageView
+            android:id="@+id/option_image"
+
+            android:layout_width="62dp"
+            android:layout_height="57dp"
+            android:layout_gravity="center"
+            android:src="@drawable/option"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/option_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/green"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/ganpan"
+            android:text="옵션"
+            android:textColor="@color/black"
+            android:textSize="40sp" />
+    </LinearLayout>
+
 
     <ImageView
         android:id="@+id/imageView"

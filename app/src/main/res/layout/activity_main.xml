@@ -6,28 +6,113 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
+    <ScrollView
+        android:layout_width="383dp"
+        android:layout_height="163dp"
+        android:id="@+id/chatscroll"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.937"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/chatting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fontFamily="@font/gangwon"
+            android:maxLines="100"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:text="Chatgpt대답"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="467dp" />
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/option_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:backgroundTint="@color/green"
+        android:gravity="end"
+        tools:ignore="MissingConstraints">
+
+
+        <ImageView
+            android:id="@+id/option_image"
+
+            android:layout_width="62dp"
+            android:layout_height="57dp"
+            android:layout_gravity="center"
+            android:src="@drawable/option"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/option_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/green"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/ganpan"
+            android:text="옵션"
+            android:textColor="@color/black"
+            android:textSize="40sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/tojung"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.63"
+        android:text="버튼"
+        tools:ignore="MissingConstraints" />
 
-    </ImageView>
-
-    <ImageView
-        android:layout_width="66dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="264dp"
-        android:src="@drawable/option"
+    <LinearLayout
+        android:id="@+id/quesview"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/purple_200"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.523"
+        tools:ignore="MissingConstraints">
 
-    </ImageView>
+        <TextView
+            android:id="@+id/ques"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gangwon"
+            android:text="질문"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.357"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
