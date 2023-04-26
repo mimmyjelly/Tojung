@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     MessageAdapter messageAdapter;
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     OkHttpClient client = new OkHttpClient();
-    private static final String MY_SECRET_KEY = "sk-";
+    private static final String MY_SECRET_KEY = "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";
     //!!!!!!!!!!!!!!!!!!!!!** API **!!!!!!!!!//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
         RequestBody body = RequestBody.create(object.toString(), JSON);
         Request request = new Request.Builder()
-                .url("https://api.openai.com/v1/completions")
+                .url("https://api.openai.com/v1/chat/completions")
                 .header("Authorization", "Bearer "+MY_SECRET_KEY)
                 .post(body)
                 .build();
@@ -273,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
             for(int i =0;i<matches.size(); i++){
                 ques.setText(matches.get(i));
 
-                String sttResult = matches.get(0); // STT 결과 리스트의 첫번째 값만 사용
+                String sttResult = matches.get(i); // STT 결과 리스트의 첫번째 값만 사용
                 addToChat(sttResult, Message.SENT_BY_ME);
                 callAPI(sttResult);
             }
