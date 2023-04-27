@@ -7,17 +7,18 @@
 
     <LinearLayout
         android:id="@+id/option_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/green"
+        android:layout_width="377dp"
+        android:layout_height="58dp"
+        android:background="@drawable/rounded_corner"
         android:backgroundTint="@color/green"
         android:gravity="end"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="16dp">
 
 
         <ImageView
             android:id="@+id/option_image"
-
             android:layout_width="62dp"
             android:layout_height="57dp"
             android:layout_gravity="center"
@@ -29,51 +30,119 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@color/green"
+            android:background="@drawable/rounded_corner"
             android:backgroundTint="@color/green"
-            android:fontFamily="@font/ganpan"
+            android:fontFamily="@font/Jamsil4"
             android:text="옵션"
             android:textColor="@color/black"
             android:textSize="40sp" />
     </LinearLayout>
 
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="66dp"
-        android:layout_height="64dp"
-        android:src="@drawable/protector"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:id="@+id/num_view"
+        android:layout_width="354dp"
+        android:layout_height="75dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/green"
+        android:gravity="end"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.53"
-        tools:ignore="MissingConstraints"></ImageView>
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="388dp">
 
-    <ImageView
-        android:layout_width="66dp"
-        android:layout_height="64dp"
-        android:src="@drawable/sun"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145"
-        tools:ignore="MissingConstraints"></ImageView>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="66dp"
-        android:layout_height="64dp"
-        android:src="@drawable/sleeping"
-        app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+            android:id="@+id/num_image"
+            android:layout_width="67dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+
+            android:src="@drawable/protector"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/num_button"
+            android:layout_width="274dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/Jamsil4"
+            android:text="보호자 정보 수정"
+            android:textColor="@color/black"
+            android:textSize="38sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sun_view"
+        android:layout_width="354dp"
+        android:layout_height="75dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/green"
+        android:gravity="end"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.332"
-        tools:ignore="MissingConstraints"></ImageView>
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="131dp">
+
+
+        <ImageView
+            android:id="@+id/sun_image"
+            android:layout_width="67dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:src="@drawable/sun"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/sun_button"
+            android:layout_width="274dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/Jamsil4"
+            android:text="기상시간 수정"
+            android:textColor="@color/black"
+            android:textSize="38sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sleep_view"
+        android:layout_width="354dp"
+        android:layout_height="75dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/green"
+        android:gravity="end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="261dp">
+
+
+        <ImageView
+            android:id="@+id/sleep_image"
+            android:layout_width="67dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:src="@drawable/sleeping"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/sleep_button"
+            android:layout_width="274dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/Jamsil4"
+            android:text="취침시간 수정"
+            android:textColor="@color/black"
+            android:textSize="38sp" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
