@@ -13,6 +13,12 @@ public class User {
     @ColumnInfo(name="userName")
     public  String userName;
 
+    @ColumnInfo(name="userWake")
+    public  String userWake;
+
+    @ColumnInfo(name="userSleep")
+    public  String userSleep;
+
     @ColumnInfo(name="userNum")
     public String userNum;
 }
