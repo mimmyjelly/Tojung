@@ -1,46 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <ScrollView
-        android:id="@+id/chatscroll"
-        android:layout_width="383dp"
-        android:layout_height="163dp"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/green"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.934"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            android:id="@+id/chatting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fadeScrollbars="false"
-            android:fontFamily="@font/Jamsil4"
-            android:maxLines="100"
-            android:scrollbarStyle="insideInset"
-            android:scrollbars="vertical"
-            android:text="Chatgpt대답"
-            android:textColor="@color/black"
-            android:textSize="40sp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="467dp" />
-    </ScrollView>
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp">
 
     <LinearLayout
         android:id="@+id/option_view"
-        android:layout_width="377dp"
-        android:layout_height="58dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
         android:backgroundTint="@color/green"
         android:gravity="end"
@@ -74,6 +47,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -83,9 +57,10 @@
         android:text="버튼"
         tools:ignore="MissingConstraints" />
 
+
     <LinearLayout
         android:id="@+id/quesview"
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
         android:backgroundTint="@color/purple_200"
@@ -101,7 +76,7 @@
 
         <TextView
             android:id="@+id/ques"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gangwon"
             android:text="질문"
@@ -115,5 +90,46 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/green"
+        android:layout_marginTop="50dp"
+        android:gravity="end"
+        tools:ignore="MissingConstraints">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ScrollView
+            android:id="@+id/chatscroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.934"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/chatting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fadeScrollbars="false"
+                android:fontFamily="@font/Jamsil4"
+                android:maxLines="100"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:text="Chatgpt대답"
+                android:textColor="@color/black"
+                android:textSize="40sp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="467dp" />
+        </ScrollView>
+    </LinearLayout>
+
+
+</LinearLayout>
