@@ -13,7 +13,8 @@ public abstract class UserDB extends RoomDatabase {
 
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                     UserDB.class, "DB_NAME")
-                    .allowMainThreadQueries().build();
+                    .allowMainThreadQueries()
+                    .build();
         }
 
         return INSTANCE;

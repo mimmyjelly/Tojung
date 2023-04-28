@@ -12,19 +12,18 @@ import java.util.List;
 
 @Dao
 public interface UserDao {
-    //조회
-    @Query("SELECT * FROM User")
-    List<User> getAll();
-
     @Insert
-    //삽입
-    void insertUser(User user);
-
-    @Delete
-    //삭제
-    void userDelete(User user);
+    void insert(User user);
 
     @Update
-    //수정
-    void userUpdate(User user);
+    void update(User user);
+
+    @Delete
+    void delete(User user);
+
+    @Query("SELECT * FROM User WHERE id = :id")
+    User getUser(int id);
+
+    @Query("SELECT * FROM User")
+    List<User> getAllUsers();
 }

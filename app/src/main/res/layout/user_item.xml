@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="보호자 이름 "
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:fontFamily="@font/Jamsil4" />
+
+    <TextView
+        android:id="@+id/guardian_name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:font="@font/Jamsil4"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="보호자 전화번호"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:fontFamily="@font/Jamsil4" />
+
+    <TextView
+        android:id="@+id/guardian_phone_number_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:font="@font/Jamsil4"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="기상 시간 "
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:fontFamily="@font/Jamsil4"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/wake_up_time_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="취침 시간"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:fontFamily="@font/Jamsil4"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/sleep_time_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>
