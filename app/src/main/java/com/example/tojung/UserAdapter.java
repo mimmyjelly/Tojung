@@ -1,69 +1,100 @@
 package com.example.tojung;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
-    private List<User> users;
-    private OnItemClickListener listener;
+    private List<User> userList;
+    private Activity context;
+    private UserDB database;
 
-    public interface OnItemClickListener {
-        void onItemClick(User user);
+    public UserAdapter(Activity context, List<User> userList){
+        this.context = context;
+        this.userList = userList;
+        notifyDataSetChanged();
     }
 
-    public UserAdapter(List<User> users, OnItemClickListener listener) {
-        this.users = users;
-        this.listener = listener;
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView guardianNameTextView;
-        public TextView wakeUpTimeTextView;
-        public TextView sleepTimeTextView;
-        public TextView guardianPhoneNumberTextView;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            guardianNameTextView = itemView.findViewById(R.id.guardian_name_textview);
-            wakeUpTimeTextView = itemView.findViewById(R.id.wake_up_time_textview);
-            sleepTimeTextView = itemView.findViewById(R.id.sleep_time_textview);
-            guardianPhoneNumberTextView = itemView.findViewById(R.id.guardian_phone_number_textview);
-        }
-
-        public void bind(final User user, final OnItemClickListener listener) {
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClick(user);
-                }
-            });
-        }
+    @NonNull
+    @Override
+    public UserAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_item, parent,false);
+        return  new ViewHolder(view);
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.user_item_layout, parent, false);
-        return new ViewHolder(view);
-    }
+    public void onBindViewHolder(@NonNull UserAdapter.ViewHolder holder, int position) {
+        final User user = userList.get(position);
+        database = UserDB.getInstance(context);
+        holder.textView.setText(user.getText());
+        holder.btEdit.setOnClickListener(new View.OnClickListener(){
 
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.guardianNameTextView.setText(users.get(position).guardianName);
-        holder.wakeUpTimeTextView.setText(users.get(position).wakeUpTime);
-        holder.sleepTimeTextView.setText(users.get(position).sleepTime);
-        holder.guardianPhoneNumberTextView.setText(users.get(position).guardianPhoneNumber);
-        holder.bind(users.get(position), listener);
+            @Override
+            public void onClick(View view) {
+                User user = userList.get(holder.getAdapterPosition());
+
+                final int sID = user.getId();
+                String sText = user.getText();
+
+                /**  팝업창  **/
+                final Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.dialog_update);
+
+                int width = WindowManager.LayoutParams.MATCH_PARENT;
+                int height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+                dialog.getWindow().setLayout(width, height);
+
+                dialog.show();
+
+                final EditText editText = dialog.findViewById(R.id.dialog_edit_text);
+                Button bt_update= dialog.findViewById(R.id.bt_update);
+
+                editText.setText(sText);
+
+                bt_update.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                        String uText = editText.getText().toString().trim();
+
+                        database.userDao().update(sID, uText);
+
+                        userList.clear();
+                        userList.addAll(database.userDao().getAll());
+                        notifyDataSetChanged();
+                    }
+                });
+            }
+        });
+
     }
 
     @Override
     public int getItemCount() {
-        return users.size();
+        return 0;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        TextView textView;
+        Button btEdit;
+
+        public ViewHolder(@NonNull View view)
+        {
+            super(view);
+            textView = view.findViewById(R.id.text_view);
+            btEdit = view.findViewById(R.id.bt_edit);
+        }
     }
 }

@@ -49,15 +49,36 @@
         android:gravity="center"
         android:textColor="@color/black"/>
 
-    <EditText
-        android:id="@+id/username"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="보호자 이름을 적어주세요."
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:gravity="center"
-        android:padding="12dp"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/guardianName_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/guardianName_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/Jamsil4"
+            android:text="수정"
+            android:textColor="@color/black" />
+
+</LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -72,15 +93,34 @@
         android:gravity="center"
         android:textColor="@color/black"/>
 
-    <EditText
-        android:id="@+id/phonenumber"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="보호자 전화번호를 적어주세요."
-        android:gravity="center"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:padding="12dp"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/guardianphonenumber_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/guardianphonenumber_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/Jamsil4"
+            android:text="수정"
+            android:textColor="@color/black" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -95,15 +135,34 @@
         android:gravity="center"
         android:textColor="@color/black"/>
 
-    <EditText
-        android:id="@+id/wakeup_time"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="기상 시간을 적어주세요."
-        android:gravity="center"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:padding="12dp"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/wakeUpTime_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/wakeUpTime_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/Jamsil4"
+            android:text="수정"
+            android:textColor="@color/black" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -118,15 +177,34 @@
         android:gravity="center"
         android:textColor="@color/black"/>
 
-    <EditText
-        android:id="@+id/sleep_time"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="취침 시간을 알려주세요"
-        android:gravity="center"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:padding="12dp"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/sleeptime_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/sleeptime_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/Jamsil4"
+            android:text="수정"
+            android:textColor="@color/black" />
+    </LinearLayout>
 
 
     </LinearLayout>

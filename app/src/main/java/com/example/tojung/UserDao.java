@@ -1,5 +1,7 @@
 package com.example.tojung;
 // 데이터베이스의 데이터를 등록, 조회, 수정, 삭제 기능 제공
+import static androidx.room.OnConflictStrategy.REPLACE;
+
 import android.widget.LinearLayout;
 
 import androidx.room.Dao;
@@ -12,7 +14,7 @@ import java.util.List;
 
 @Dao
 public interface UserDao {
-    @Insert
+    @Insert(onConflict = REPLACE)
     void insert(User user);
 
     @Update
@@ -21,9 +23,19 @@ public interface UserDao {
     @Delete
     void delete(User user);
 
-    @Query("SELECT * FROM User WHERE id = :id")
-    User getUser(int id);
+    @Query("UPDATE USER SET text = :sText WHERE ID = :sID")
+    void update(int sID, String sText);
+    @Query("SELECT * FROM USER")
+    List<User> getAll();
+    @Query("SELECT * FROM USER WHERE id = 1 LIMIT 1")
+    User getname();
 
-    @Query("SELECT * FROM User")
-    List<User> getAllUsers();
+    @Query("SELECT * FROM USER WHERE id = 2 LIMIT 1")
+    User getnumber();
+
+    @Query("SELECT * FROM USER WHERE id = 2 LIMIT 1")
+    User getwakeup();
+
+    @Query("SELECT * FROM USER WHERE id = 2 LIMIT 1")
+    User getsleep();
 }

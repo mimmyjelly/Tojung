@@ -7,20 +7,27 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "USER")
 public class User {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    @ColumnInfo(name="guardianName")
-    public  String guardianName;
+    @ColumnInfo(name="text")
+    public  String text;
 
-    @ColumnInfo(name="wakeUpTime")
-    public  String wakeUpTime;
+    public int getId() {
+        return id;
+    }
 
-    @ColumnInfo(name="sleepTime")
-    public  String sleepTime;
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    @ColumnInfo(name="guardianPhoneNumber")
-    public String guardianPhoneNumber;
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }

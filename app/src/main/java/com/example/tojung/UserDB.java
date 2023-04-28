@@ -1,23 +1,29 @@
 package com.example.tojung;
 import android.content.Context;
 
+import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+@Database(entities = {User.class},version=1,exportSchema = false)
 public abstract class UserDB extends RoomDatabase {
-    public  abstract UserDao userDao();
-    private static UserDB INSTANCE;
+    private static UserDB database;
+    private static String DATABASE_NAME = "database";
 
-    public static UserDB getDBInstance(Context context){
-        if(INSTANCE == null){
-
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                    UserDB.class, "DB_NAME")
+    public synchronized static UserDB getInstance(Context context)
+    {
+        if(database == null)
+        {
+            database = Room.databaseBuilder(context.getApplicationContext(),
+                    UserDB.class,
+                    DATABASE_NAME)
                     .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
                     .build();
         }
+        return database;
 
-        return INSTANCE;
     }
 
+    public abstract UserDao userDao();
 }
