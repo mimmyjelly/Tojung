@@ -60,7 +60,12 @@ public class SubActivity extends AppCompatActivity {
                     }
                 });
 
+                //Main으로 넘어가기
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+
             }
+
         });
     }
 }
