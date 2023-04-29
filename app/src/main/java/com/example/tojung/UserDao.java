@@ -1,41 +1,25 @@
 package com.example.tojung;
-// 데이터베이스의 데이터를 등록, 조회, 수정, 삭제 기능 제공
-import static androidx.room.OnConflictStrategy.REPLACE;
 
-import android.widget.LinearLayout;
+import com.example.tojung.User;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
-import androidx.room.Update;
+public class UserDao {
+    private DatabaseReference databaseReference;
 
-import java.util.List;
+    UserDao(){
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        databaseReference = db.getReference(User.class.getSimpleName());
+    }
 
-@Dao
-public interface UserDao {
-    @Insert(onConflict = REPLACE)
-    void insert(User user);
+    //등록
+    public Task<Void> add(User user){
+        return databaseReference.push().setValue(user);
+    }
 
-    @Update
-    void update(User user);
-
-    @Delete
-    void delete(User user);
-
-    @Query("UPDATE USER SET text = :sText WHERE ID = :sID")
-    void update(int sID, String sText);
-    @Query("SELECT * FROM USER")
-    List<User> getAll();
-    @Query("SELECT * FROM USER WHERE id = 1 LIMIT 1")
-    User getname();
-
-    @Query("SELECT * FROM USER WHERE id = 2 LIMIT 1")
-    User getnumber();
-
-    @Query("SELECT * FROM USER WHERE id = 2 LIMIT 1")
-    User getwakeup();
-
-    @Query("SELECT * FROM USER WHERE id = 2 LIMIT 1")
-    User getsleep();
+    public Query get(){
+        return databaseReference;
+    }
 }

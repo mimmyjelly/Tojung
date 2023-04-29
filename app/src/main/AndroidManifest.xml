@@ -13,6 +13,9 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,6 +25,10 @@
         </activity>
         <activity android:name=".option"
             tools:ignore="Instantiatable" />
+
+        <activity android:name=".SubActivity"/>
+        <activity android:name=".option"
+            tools:ignore="DuplicateActivity" />
     </application>
 
 

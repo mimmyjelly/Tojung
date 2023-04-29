@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "235623953169",
+    "project_id": "tojeong-7aaa5",
+    "storage_bucket": "tojeong-7aaa5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235623953169:android:79fef3ba5a388b0facd2b0",
+        "android_client_info": {
+          "package_name": "com.example.tojung"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235623953169-qmhevskrdv7v6qqhltahsmuut1d13p1i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZRP3eTJ1Z9ebU0SafFNmdDBrbXSSqdzc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "235623953169-qmhevskrdv7v6qqhltahsmuut1d13p1i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

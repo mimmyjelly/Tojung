@@ -30,7 +30,7 @@
             android:layout_gravity="center"
             android:background="@drawable/rounded_corner"
             android:backgroundTint="@color/green"
-            android:fontFamily="@font/Jamsil4"
+            android:fontFamily="@font/jamsil4"
             android:text="옵션"
             android:textColor="@color/black"
             android:textSize="40sp" />
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner"
             android:backgroundTint="@color/green"
-            android:fontFamily="@font/Jamsil4"
+            android:fontFamily="@font/jamsil4"
             android:text="수정"
             android:textColor="@color/black" />
 
@@ -117,7 +117,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner"
             android:backgroundTint="@color/green"
-            android:fontFamily="@font/Jamsil4"
+            android:fontFamily="@font/jamsil4"
             android:text="수정"
             android:textColor="@color/black" />
     </LinearLayout>
@@ -159,7 +159,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner"
             android:backgroundTint="@color/green"
-            android:fontFamily="@font/Jamsil4"
+            android:fontFamily="@font/jamsil4"
             android:text="수정"
             android:textColor="@color/black" />
     </LinearLayout>
@@ -201,7 +201,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner"
             android:backgroundTint="@color/green"
-            android:fontFamily="@font/Jamsil4"
+            android:fontFamily="@font/jamsil4"
             android:text="수정"
             android:textColor="@color/black" />
     </LinearLayout>

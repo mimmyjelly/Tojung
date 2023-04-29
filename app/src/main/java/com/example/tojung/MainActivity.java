@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     OkHttpClient client = new OkHttpClient();
     private static final String MY_SECRET_KEY = "sk-";
-    //!!!!!!!!!!!!!!!!!!!!!** API **!!!!!!!!!//
+    /**!!!!!!!!!!!!!!!!!!!!!** API **!!!!!!!!!**/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
