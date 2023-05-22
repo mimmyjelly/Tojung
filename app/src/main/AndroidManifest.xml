@@ -16,18 +16,15 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".option"
             tools:ignore="Instantiatable" />
-
         <activity android:name=".MainActivity"/>
-        <activity android:name=".option"
-            tools:ignore="DuplicateActivity" />
     </application>
+
 
     <!-- 인터넷, 오디오 사용 권한 추가 -->
     <uses-permission android:name="android.permission.INTERNET" />
