@@ -43,6 +43,17 @@
             android:textSize="40sp" />
     </LinearLayout>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="303dp"
+        android:id="@+id/girl"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/girlbutton"
+        android:text="스마일"/>
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"

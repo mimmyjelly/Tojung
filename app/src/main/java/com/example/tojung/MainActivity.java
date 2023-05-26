@@ -1,9 +1,5 @@
 package com.example.tojung;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.os.Build;
@@ -14,9 +10,15 @@ import android.speech.SpeechRecognizer;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,14 +44,16 @@ public class MainActivity extends AppCompatActivity {
     Button option_button;
     Intent intent;
     Button button; //음성 버튼
+    Button girlbutton;
     SpeechRecognizer mRecognizer; //음성인식기 객체
     final int PERMISSION = 1;
     List<Message> messageList; //메시지를 저장하는 리스트
     MessageAdapter messageAdapter;
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     OkHttpClient client = new OkHttpClient();
-    private static final String MY_SECRET_KEY = "sk-";
+    private static final String MY_SECRET_KEY = "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";
     /**!!!!!!!!!!!!!!!!!!!!!** API **!!!!!!!!!**/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         ques = findViewById(R.id.ques); //질문
         chatting=findViewById(R.id.chatting); //봇대답
         button = findViewById(R.id.button); //음성 버튼
+        girlbutton = findViewById(R.id.girlbutton);
 
         messageList = new ArrayList<>();
         messageAdapter = new MessageAdapter(messageList);
@@ -73,6 +78,12 @@ public class MainActivity extends AppCompatActivity {
         intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getPackageName()); //여분의 키
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,"ko-KR"); //언어 설정
+
+
+        ImageView girl = (ImageView) findViewById(R.id.girl);
+        girl.setImageResource(R.drawable.girl);
+
+
 
         //안드로이드 버전 확인 후 음성 권한 체크
         if(Build.VERSION.SDK_INT >= 23){
@@ -91,8 +102,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        girlbutton.setOnClickListener(new View.OnClickListener(){ //녹음버튼 눌렀을 때!!!
+            @Override
+            public void onClick(View v){
+                Glide.with(getApplicationContext()).asGif().load(R.raw.smile2).into(girl);
+            }
+        });
 
-        option_button.setOnClickListener(new View.OnClickListener() {
+
+        option_button.setOnClickListener(new View.OnClickListener() { //버튼누르면 gif나옴!
             //옵션 버튼 클릭시 화면 이동
             @Override
             public void onClick(View view) {
