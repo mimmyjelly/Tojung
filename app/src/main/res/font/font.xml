@@ -7,4 +7,9 @@
     <font android:fontStyle="normal"
         android:fontWeight="400"
         android:font="@font/ganpan"/>
+
+    <font android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/pretendard1"/>
+
 </font-family>

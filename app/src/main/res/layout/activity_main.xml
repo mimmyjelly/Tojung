@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/green"
+        android:backgroundTint="@color/blue2"
         android:gravity="end"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="19dp"
@@ -36,17 +36,26 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/rounded_corner"
-            android:backgroundTint="@color/green"
-            android:fontFamily="@font/jamsil4"
+            android:backgroundTint="@color/blue2"
+            android:fontFamily="@font/pretendard1"
             android:text="옵션"
             android:textColor="@color/black"
             android:textSize="40sp" />
     </LinearLayout>
 
+    <Spinner
+        android:id="@+id/spinner_cpv_lang"
+        android:layout_width="151dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:entries="@array/cpv_lang_spinner"
+        app:layout_constraintEnd_toEndOf="@+id/text_input_cpv"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"></Spinner>
+
     <ImageView
+        android:id="@+id/girl"
         android:layout_width="match_parent"
-        android:layout_height="303dp"
-        android:id="@+id/girl"/>
+        android:layout_height="458dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -54,27 +63,26 @@
         android:id="@+id/girlbutton"
         android:text="스마일"/>
 
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:text="버튼"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.63"
-        android:text="버튼"
         tools:ignore="MissingConstraints" />
-
 
     <LinearLayout
         android:id="@+id/quesview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/purple_200"
+        android:backgroundTint="@color/blue"
         android:orientation="horizontal"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -89,7 +97,7 @@
             android:id="@+id/ques"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/jamsil4"
+            android:fontFamily="@font/pretendard1"
             android:text="질문"
             android:textColor="@color/black"
             android:textSize="40sp"
@@ -106,7 +114,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
         android:backgroundTint="@color/green"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="5dp"
         android:gravity="end"
         tools:ignore="MissingConstraints">
 
@@ -115,7 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/rounded_corner"
-            android:backgroundTint="@color/green"
+            android:backgroundTint="@color/blue2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.571"
@@ -129,7 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fadeScrollbars="false"
-                android:fontFamily="@font/jamsil4"
+                android:fontFamily="@font/pretendard1"
                 android:maxLines="100"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="vertical"

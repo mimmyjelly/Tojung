@@ -21,6 +21,8 @@
             android:id="@+id/bt_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendard1"
+            android:textSize="20dp"
             android:text="수정"
             android:layout_marginStart="8dp"/>
 
@@ -28,6 +30,8 @@
             android:id="@+id/bt_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendard1"
+            android:textSize="20dp"
             android:text="삭제"
             android:layout_marginStart="8dp"/>
 

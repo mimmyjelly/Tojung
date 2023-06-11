@@ -1,7 +1,10 @@
 package com.example.tojung;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
@@ -12,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -37,6 +41,8 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import com.example.tojung.CpvProc;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView chatting;  //chatgpt 대답
@@ -51,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     MessageAdapter messageAdapter;
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     OkHttpClient client = new OkHttpClient();
-    private static final String MY_SECRET_KEY = "sk";
+    private static final String MY_SECRET_KEY = "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";
     /**!!!!!!!!!!!!!!!!!!!!!** API **!!!!!!!!!**/
 
     @Override
@@ -83,6 +89,14 @@ public class MainActivity extends AppCompatActivity {
         ImageView girl = (ImageView) findViewById(R.id.girl);
         girl.setImageResource(R.drawable.girl);
 
+        mRecognizer = SpeechRecognizer.createSpeechRecognizer(MainActivity.this);
+        //새 SpeechRecognizer를 만드는 팩토리 메서드
+        mRecognizer.setRecognitionListener(listener); //리스너 설정
+        mRecognizer.startListening(intent);
+
+        SharedPreferences sharedPref = getSharedPreferences("PREF", Context.MODE_PRIVATE);
+        final String clientId = sharedPref.getString("application_client_id", "");
+        final String clientSecret = sharedPref.getString("application_client_secret", "");
 
 
         //안드로이드 버전 확인 후 음성 권한 체크
@@ -102,10 +116,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        girlbutton.setOnClickListener(new View.OnClickListener(){ //녹음버튼 눌렀을 때!!!
+        girlbutton.setOnClickListener(new View.OnClickListener(){ //스마일 버튼 눌렀을 때!!!
             @Override
             public void onClick(View v){
-                Glide.with(getApplicationContext()).asGif().load(R.raw.smile2).into(girl);
+                Glide.with(getApplicationContext()).asGif().load(R.raw.smile5s).into(girl);
             }
         });
 
@@ -124,20 +138,37 @@ public class MainActivity extends AppCompatActivity {
                 .writeTimeout(120, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
                 .build();
+
     }
 
+
+    /**--------------------------채팅 출력--------------------------**/
+
     void addToChat(String message, String sentBy) {
+        SharedPreferences sharedPref = getSharedPreferences("PREF", Context.MODE_PRIVATE);
+        final String clientId = sharedPref.getString("application_client_id", "");
+        final String clientSecret = sharedPref.getString("application_client_secret", "");
         runOnUiThread(new Runnable() {
+
+            Spinner spinner = (Spinner)findViewById(R.id.spinner_cpv_lang);
+            String selItem = spinner.getSelectedItem().toString();
+            String[] splits = selItem.split("\\(");
+            String speaker = splits[0];
             @Override
             public void run() {
                 String chatLog = chatting.getText().toString();
                 if(!chatLog.isEmpty()){
                     chatLog += "\n\n";
                 }
-                chatLog += sentBy + ": " + message;
+                speaker = "mijin";
+                chatLog = message;
                 chatting.setText(chatLog);
+                String strText = chatting.getText().toString();
 
+                MainActivity.NaverTTSTask tts = new MainActivity.NaverTTSTask();
+                tts.execute(strText, speaker, clientId, clientSecret);
                 ScrollView scrollView = findViewById(R.id.chatscroll);
+
                 chatting.post(new Runnable() {
                     @Override
                     public void run() {
@@ -148,11 +179,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
     void addResponse(String response) {
         messageList.remove(messageList.size() - 1);
         addToChat(response, Message.SENT_BY_BOT);
     }
 
+    /**--------------------------chatgpt API 불러오기--------------------------**/
     void callAPI(String sttText){
         messageList.add(new Message("입력 중. . .", Message.SENT_BY_BOT));
 
@@ -217,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //------인터페이스 구현 콜백처리-------//
+    /**--------------------------인터페이스 콜백 처리--------------------------**/
     private RecognitionListener listener = new RecognitionListener() {
         @Override
         public void onReadyForSpeech(Bundle bundle) {
@@ -298,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
             for(int i =0;i<matches.size(); i++){
                 ques.setText(matches.get(i));
 
-                String sttResult = matches.get(i); // STT 결과 리스트의 첫번째 값만 사용
+                String sttResult = matches.get(i); // STT 결과 리스트 사용
                 addToChat(sttResult, Message.SENT_BY_ME);
                 callAPI(sttResult);
             }
@@ -314,6 +348,20 @@ public class MainActivity extends AppCompatActivity {
             //향후 이벤트를 추가하기 위해 예약
         }
     };
+
+    /**--------------------CPV 관련 코드--------------------**/
+    public class NaverTTSTask extends AsyncTask<String, String, String> {
+
+        @Override
+        public String doInBackground(String... strings) {
+
+            CpvProc.main(strings[0], strings[1], strings[2], strings[3]);
+            return null;
+        }
+    }
+
+
+
 }
 
 

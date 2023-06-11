@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="텍스트 입력"
-        android:fontFamily="@font/jamsil2"
+        android:fontFamily="@font/pretendard1"
+        android:textSize="20dp"
         android:padding="12dp"
         android:lines="4"
         android:gravity="top"/>
@@ -20,10 +21,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/green"
+        android:backgroundTint="#99B7F9"
         android:text="수정하기"
+        android:fontFamily="@font/pretendard1"
         android:textSize="20dp"
-        android:fontFamily="@font/jamsil4"
         android:layout_marginTop="8dp"/>
 
 </LinearLayout>

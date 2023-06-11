@@ -37,7 +37,7 @@
             android:layout_gravity="center"
             android:background="@drawable/rounded_corner"
             android:backgroundTint="@color/green"
-            android:fontFamily="@font/jamsil4"
+            android:fontFamily="@font/pretendard1"
             android:text="옵션"
             android:textColor="@color/black"
             android:textSize="40sp" />
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner"
             android:backgroundTint="@color/green"
-            android:fontFamily="@font/jamsil4"
+            android:fontFamily="@font/pretendard1"
             android:text="보호자 정보 수정"
             android:textColor="@color/black"
             android:textSize="38sp" />
@@ -111,7 +111,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner"
             android:backgroundTint="@color/green"
-            android:fontFamily="@font/jamsil4"
+            android:fontFamily="@font/pretendard1"
             android:text="기상시간 수정"
             android:textColor="@color/black"
             android:textSize="38sp" />
@@ -149,7 +149,7 @@
             android:layout_gravity="center"
             android:background="@drawable/rounded_corner"
             android:backgroundTint="@color/green"
-            android:fontFamily="@font/jamsil4"
+            android:fontFamily="@font/pretendard1"
             android:text="취침시간 수정"
             android:textColor="@color/black"
             android:textSize="38sp" />

@@ -31,11 +31,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Message message = messageList.get(position);
+
+        // 유저 입력시
         if(message.getSentBy().equals(Message.SENT_BY_ME)){
             holder.left_chat_view.setVisibility(View.GONE);
             holder.right_chat_view.setVisibility(View.VISIBLE);
             holder.right_chat_tv.setText(message.getMessage());
-        } else {
+        } else { //시스템 입력 시
             holder.right_chat_view.setVisibility(View.GONE);
             holder.left_chat_view.setVisibility(View.VISIBLE);
             holder.left_chat_tv.setText(message.getMessage());
@@ -53,10 +55,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            left_chat_view = itemView.findViewById(R.id.chatscroll);
-            right_chat_view = itemView.findViewById(R.id.quesview);
-            left_chat_tv = itemView.findViewById(R.id.chatting);
-            right_chat_tv = itemView.findViewById(R.id.ques);
+            left_chat_view = itemView.findViewById(R.id.chatscroll);    //챗대답
+            right_chat_view = itemView.findViewById(R.id.quesview);     //질문
+            left_chat_tv = itemView.findViewById(R.id.chatting);        //챗대답 텍스트뷰
+            right_chat_tv = itemView.findViewById(R.id.ques);           //질문 텍스트뷰
         }
     }
 }
