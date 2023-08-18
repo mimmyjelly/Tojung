@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,9 +19,13 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
 
 import com.bumptech.glide.Glide;
 
@@ -41,6 +46,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import com.bumptech.glide.load.resource.gif.GifDrawable;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.example.tojung.CpvProc;
 
 public class MainActivity extends AppCompatActivity {
@@ -57,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     MessageAdapter messageAdapter;
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     OkHttpClient client = new OkHttpClient();
-    private static final String MY_SECRET_KEY = "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";
+    private static final String MY_SECRET_KEY = BuildConfig.CHATGPT_API; //chatgpt
     /**!!!!!!!!!!!!!!!!!!!!!** API **!!!!!!!!!**/
 
     @Override
@@ -89,16 +97,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView girl = (ImageView) findViewById(R.id.girl);
         girl.setImageResource(R.drawable.girl);
 
-        mRecognizer = SpeechRecognizer.createSpeechRecognizer(MainActivity.this);
-        //새 SpeechRecognizer를 만드는 팩토리 메서드
-        mRecognizer.setRecognitionListener(listener); //리스너 설정
-        mRecognizer.startListening(intent);
-
-        SharedPreferences sharedPref = getSharedPreferences("PREF", Context.MODE_PRIVATE);
-        final String clientId = sharedPref.getString("application_client_id", "");
-        final String clientSecret = sharedPref.getString("application_client_secret", "");
-
-
         //안드로이드 버전 확인 후 음성 권한 체크
         if(Build.VERSION.SDK_INT >= 23){
             ActivityCompat.requestPermissions(this, new String[] {android.Manifest.permission.INTERNET,
@@ -119,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         girlbutton.setOnClickListener(new View.OnClickListener(){ //스마일 버튼 눌렀을 때!!!
             @Override
             public void onClick(View v){
-                Glide.with(getApplicationContext()).asGif().load(R.raw.smile5s).into(girl);
+                Glide.with(getApplicationContext()).asGif().load(R.drawable.smile5s).into(girl);
             }
         });
 
@@ -146,8 +144,8 @@ public class MainActivity extends AppCompatActivity {
 
     void addToChat(String message, String sentBy) {
         SharedPreferences sharedPref = getSharedPreferences("PREF", Context.MODE_PRIVATE);
-        final String clientId = sharedPref.getString("application_client_id", "");
-        final String clientSecret = sharedPref.getString("application_client_secret", "");
+        final String clientId = sharedPref.getString("application_client_id", BuildConfig.APPLICATION_CLIENT_ID);
+        final String clientSecret = sharedPref.getString("application_client_secret", BuildConfig.APPLICATION_CLIENT_SECRET);
         runOnUiThread(new Runnable() {
 
             Spinner spinner = (Spinner)findViewById(R.id.spinner_cpv_lang);
@@ -240,6 +238,13 @@ public class MainActivity extends AppCompatActivity {
                         JSONArray jsonArray = jsonObject.getJSONArray("choices");
                         //아래 result 받아오는 경로가 좀 수정되었다.
                         String result = jsonArray.getJSONObject(0).getJSONObject("message").getString("content");
+                        // 응답 메시지에 '감사' 또는 '고맙' 단어가 있는지 확인
+                        if (result.contains("감사")|| result.contains("고맙")) {
+                            ImageView girl = findViewById(R.id.girl);
+                            // 단어가 들어가면 GIF 재생 로직 실행
+                            playGifAndThenChangeImage(girl, R.drawable.girl_smile, 0, R.drawable.girl, 1);
+                        }
+
                         addResponse(result.trim());
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -359,7 +364,41 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
+    /**--------------------GIF 관련 코드--------------------**/
+    /**-playGifAndThenChangeImage(girl, gif위치, 0, 다시바꿀사진, 반복횟수);-**/
+    private void playGifAndThenChangeImage(ImageView imageView, @DrawableRes int gifResId, @DrawableRes int placeholderResId, @DrawableRes int endImageResId, int loopCount) {
+        Glide.with(getApplicationContext())
+                .asGif()
+                .load(gifResId)
+                .placeholder(placeholderResId)
+                .into(new CustomTarget<GifDrawable>() {
+                    @Override
+                    public void onResourceReady(@NonNull GifDrawable resource, @Nullable Transition<? super GifDrawable> transition) {
+                        // GIF 드로어블을 이미지뷰에 설정합니다.
+                        imageView.setImageDrawable(resource);
 
+                        // 루프 횟수를 설정합니다.
+                        resource.setLoopCount(loopCount);
+
+                        // 애니메이션 종료 후 이미지를 변경하는 리스너를 추가합니다.
+                        resource.registerAnimationCallback(new Animatable2Compat.AnimationCallback() {
+                            @Override
+                            public void onAnimationEnd(Drawable drawable) {
+                                // 이미지를 지정한 종료 이미지로 변경합니다.
+                                imageView.setImageResource(endImageResId);
+                            }
+                        });
+
+                        // GIF 애니메이션을 시작합니다.
+                        resource.start();
+                    }
+
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable placeholder) {
+                        // 아무것도 수행하지 않습니다.
+                    }
+                });
+    }
 
 
 }
