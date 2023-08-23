@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
     Button option_button;
     Intent intent;
     Button button; //음성 버튼
-    Button girlbutton;
     SpeechRecognizer mRecognizer; //음성인식기 객체
     final int PERMISSION = 1;
     List<Message> messageList; //메시지를 저장하는 리스트
@@ -83,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
         ques = findViewById(R.id.ques); //질문
         chatting=findViewById(R.id.chatting); //봇대답
         button = findViewById(R.id.button); //음성 버튼
-        girlbutton = findViewById(R.id.girlbutton);
 
         messageList = new ArrayList<>();
         messageAdapter = new MessageAdapter(messageList);
@@ -114,14 +112,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        girlbutton.setOnClickListener(new View.OnClickListener(){ //스마일 버튼 눌렀을 때!!!
-            @Override
-            public void onClick(View v){
-                Glide.with(getApplicationContext()).asGif().load(R.drawable.smile5s).into(girl);
-            }
-        });
-
-
         option_button.setOnClickListener(new View.OnClickListener() { //버튼누르면 gif나옴!
             //옵션 버튼 클릭시 화면 이동
             @Override
@@ -147,11 +137,7 @@ public class MainActivity extends AppCompatActivity {
         final String clientId = sharedPref.getString("application_client_id", BuildConfig.APPLICATION_CLIENT_ID);
         final String clientSecret = sharedPref.getString("application_client_secret", BuildConfig.APPLICATION_CLIENT_SECRET);
         runOnUiThread(new Runnable() {
-
-            Spinner spinner = (Spinner)findViewById(R.id.spinner_cpv_lang);
-            String selItem = spinner.getSelectedItem().toString();
-            String[] splits = selItem.split("\\(");
-            String speaker = splits[0];
+            String speaker;
             @Override
             public void run() {
                 String chatLog = chatting.getText().toString();
@@ -243,6 +229,18 @@ public class MainActivity extends AppCompatActivity {
                             ImageView girl = findViewById(R.id.girl);
                             // 단어가 들어가면 GIF 재생 로직 실행
                             playGifAndThenChangeImage(girl, R.drawable.girl_smile, 0, R.drawable.girl, 1);
+                        }
+
+                        else if (result.contains("우와")|| result.contains("대단")) {
+                            ImageView girl = findViewById(R.id.girl);
+                            // 단어가 들어가면 GIF 재생 로직 실행
+                            playGifAndThenChangeImage(girl, R.drawable.girl_wow, 0, R.drawable.girl, 1);
+                        }
+
+                        else if (result.contains("슬퍼")|| result.contains("절망")) {
+                            ImageView girl = findViewById(R.id.girl);
+                            // 단어가 들어가면 GIF 재생 로직 실행
+                            playGifAndThenChangeImage(girl, R.drawable.girl_sad, 0, R.drawable.girl, 1);
                         }
 
                         addResponse(result.trim());
